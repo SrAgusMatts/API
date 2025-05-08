@@ -25,7 +25,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString)); // O .UseSqlServer() si us·s SQL Server
+    options.UseNpgsql(connectionString)); // O .UseSqlServer() si us√°s SQL Server
 
 
 
@@ -48,15 +48,14 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Enable middleware to serve Swagger UI
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseCors("AllowAll");
 
-// ?? AGREG¡ ESTE MIDDLEWARE
+// ?? AGREG√Å ESTE MIDDLEWARE
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseHttpsRedirection();
